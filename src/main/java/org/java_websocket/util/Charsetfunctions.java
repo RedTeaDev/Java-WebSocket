@@ -80,6 +80,8 @@ public class Charsetfunctions {
       bytes.reset();
     } catch (CharacterCodingException e) {
       throw new InvalidDataException(CloseFrame.NO_UTF8, e);
+    } catch (OutOfMemoryError e) {
+      throw new InvalidDataException(CloseFrame.TOOBIG, e);
     }
     return s;
   }
